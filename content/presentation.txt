@@ -1,0 +1,1485 @@
+.. include:: <s5defs.txt>
+
+.. class:: huge
+
+`Anti-Patterns`:orange:
+
+April 2011
+
+Dan McCallum (@dmccallum)
+
+In the beginning there was...
+=============================
+
+A "Real" Architect
+==================
+
+.. container:: center
+
+  .. image:: images/Christopher_Alexander.jpg
+
+.. class:: tiny
+
+`FAL http://upload.wikimedia.org/wikipedia/commons/4/49/Christopher_Alexander.jpg`:tiny:
+
+.. That photo is 320 × 240
+
+What's a Pattern?
+=================
+
+.. class:: small
+
+"Each pattern describes a problem which occurs over and over again in our environment, and then describes the core of the solution to that problem, in such a way that you can use this solution a million times over, without ever doing it the same way twice."
+
+  -- C.Alexander
+
+... and later on ...
+====================
+
+`... the fake architects ...`:tiny:
+===================================
+
+.. container:: center
+
+  .. image:: images/Gang-of-Four-image.jpg
+
+.. class:: tiny
+
+`http://knobrock.net/2011/02/interview-gangoffour-andy-gill/`:tiny:
+
+`... er, wait ...`:tiny:
+========================
+
+.. container:: center
+
+  .. image:: images/9803af1.gif
+
+.. class:: tiny
+
+`http://www.research.ibm.com/designpatterns/pubs/ddj-eip-award.htm`:tiny:
+
+`.`:tiny:
+=========
+
+.. container:: center
+
+  .. image:: images/design-patterns-cover.jpg
+
+.. class:: tiny
+
+`http://www.amazon.com/Design-Patterns-Elements-Reusable-Object-Oriented/dp/0201633612/ref=sr_1_1?ie=UTF8&qid=1301177674&sr=1-1-catcorr`:tiny:
+
+.. That photo is 500 x 500
+
+`.`:tiny:
+=========
+
+.. class:: tiny
+
+"Design patterns make it easier to reuse successful designs and architectures.... Design patterns help you choose design alternatives that make a system reusable and avoid alternatives that compromise reusability. Design patterns can even improve the documentation and maintenance of existing systems by furnishing an explicit specification of class and object interactions and their underlying intent."
+
+  -- GoF
+
+`.`:tiny:
+=========
+
+.. container:: center
+
+  .. image:: images/70156.jpg
+
+.. class:: tiny
+
+`http://www.goodreads.com/book/show/70156.Patterns_of_Enterprise_Application_Architecture`:tiny:
+
+Reusable, sure
+==============
+
+Some level of implied sanction
+==============================
+
+`If I get one more resume w/ a list of Patterns...`
+
+But more importantly...
+=======================
+
+They're a shared language
+=========================
+
+Sort of a DSL over OO primitives
+================================
+
+We all know what the Observer pattern is, and what it's trying to solve
+=======================================================================
+
+`Easier than re-explaining this mess every time`:small:
+=======================================================
+
+.. container:: center
+
+  .. image:: images/500px-Observer.svg.png
+
+.. class:: tiny
+
+`PD http://en.wikipedia.org/wiki/File:Observer.svg`:tiny:
+
+`"Real" patterns come complete with pseudo-academic descriptors`:tiny:
+======================================================================
+
+`Name`
+
+`Problem`
+
+`Solution`
+
+`Consequences`
+
+So what's an Antipattern?
+=========================
+
+`.`:tiny:
+=========
+
+.. container:: center
+
+  .. image:: images/antipatterns-com-broken-images.png
+
+`"The Upstart GoF"`:tiny:
+=========================
+
+.. container:: center
+
+  .. image:: images/antipatterns-brown-cover.jpg
+
+.. class:: tiny
+
+`http://ebookee.org/AntiPatterns-Refactoring-Software-Architectures-and-Projects-in-Crisis_4527.html`:tiny:
+
+Antipattern <> Mistake
+======================
+
+`Recurring`
+
+`Well-Intentioned`
+
+`Proven, repeatable alternatives`
+
+"An AntiPattern is a pattern that tells how to go from a problem to a bad solution."
+====================================================================================
+
+.. ::class tiny
+
+http://c2.com/cgi/wiki?AntiPattern
+
+So much more *fun* than the real patterns...
+============================================
+
+"Architects Play Golf"
+======================
+
+.. class:: tiny
+
+http://c2.com/cgi/wiki?ArchitectsPlayGolf
+
+"Blowhard Jamboree"
+===================
+
+.. class:: tiny
+
+http://c2.com/cgi/wiki?BlowhardJamboree
+
+"Standing on the Shoulders of Midgets"
+======================================
+
+.. class:: tiny
+
+http://c2.com/cgi/wiki?StandingOnTheShouldersOfMidgets
+
+"Big Ball of Mud"
+=================
+
+.. class:: tiny
+
+http://en.wikipedia.org/wiki/Big_ball_of_mud
+
+"Alcohol Fueled Development"
+============================
+
+.. class:: small incremental
+
+`Problem: Development team loses focus on primary goals due to volume of alcohol consumed`
+
+.. class:: small incremental
+
+`Result: Effort reduction as developers may be taken into custody`
+
+.. class:: small incremental
+
+`Result: Windows ME`
+
+.. class:: tiny
+
+http://c2.com/cgi/wiki?AlcoholFueledDevelopment
+
+"The Grand of Duke of York"
+===========================
+
+.. class:: tiny
+
+http://c2.com/cgi/wiki?TheGrandOldDukeOfYork
+
+And of course...
+================
+
+"Over Use of Patterns"
+======================
+
+.. class:: tiny
+
+http://c2.com/cgi/wiki?OverUseOfPatterns
+
+`The !(Patterns)`:orange:
+=========================
+
+`It's all about attitude`
+
+`!(1)`:tiny:
+============
+
+.. container:: center
+
+  .. image:: images/368069029_5f50fe6ac3.jpg
+
+.. class:: tiny
+
+`CC BY-NC-SA 2.0 http://www.flickr.com/photos/wheatfields/368069029`:tiny:
+
+.. That photo is 347 x 500
+
+!(1) Ostriching
+===============
+
+`Willful ignorance`
+
+Ostrich is a Versatile Meat
+===========================
+
+Ostrich Preparation Option #1
+=============================
+
+`The power of positive thinking.`
+
+The best interview coding solutions always start with...
+========================================================
+
+`.`:white:
+==========
+
+| public void trickQuestion(String input) {
+
+.. class:: incremental small
+
+|   if ( input == null || "".equals(input.trim()) ) {
+|     // ... something reasonable ...
+|   }
+
+| }
+
+Swallowed exceptions tell no tales
+==================================
+
+.. class:: small incremental
+
+| public void magicHappens() {
+|   try {
+|     doMagic()
+|   } catch ( Throwable t ) {
+|     // Yum! Yum!
+|   }
+| }
+
+Sometimes you just feel sorry for log files and take it easy on 'em
+===================================================================
+
+`.`:tiny:
+=========
+
+| public void magicHappens() {
+|   try {
+|     doMagic()
+|   } catch ( Throwable t ) {
+|     log.error("Woops! " + t.getMessage());
+|   }
+| }
+
+`Sometimes suppressing traces is fine`:small:
+=============================================
+
+`Spring RestTemplate response handling`
+
+`Some boolean tests`
+
+`Don't send them to the client!`
+
+
+Ostrich Preparation Option #2
+=============================
+
+`Reinventing the square wheel`
+
+`No, no, seriously. We got RPC right this time.`
+
+`.`:tiny:
+=========
+
+.. container:: center
+
+  .. image:: images/4263233765_d22864362f.jpg
+
+.. class:: tiny
+
+`CC BY 2.0 http://www.flickr.com/photos/horiavarlan/4263233765`:tiny:
+
+.. That photo is 347 x 500
+
+`What's wrong with SOAP?`:tiny:
+===============================
+
+`Can I just send a document? Please?`
+
+`HTTP CRUD is amazingly flexible.`
+
+`What about the browser?`
+
+`WS-(death)*`
+
+What does this smell like?
+==========================
+
+.. class:: small
+
+| public int compareTo(Object o) {
+|   return (m_millisecondsSince < ((MyTime) o).m_millisecondsSince ? -1
+|     : (m_millisecondsSince > ((MyTime) o).m_millisecondsSince ? 1 : 0));
+| }
+
+Getting stronger?
+=================
+
+.. class:: small
+
+| public boolean before(Time other) {
+|   if (other == null) 
+|     return false;
+|   return (m_millisecondsSince < ((MyTime) other).m_millisecondsSince);
+| }
+
+Now?
+====
+
+.. class:: small
+
+| public boolean after(Time other) {
+|   if (other == null) 
+|     return true;
+|   return (m_millisecondsSince > ((MyTime) other).m_millisecondsSince);
+| }
+
+That's right...
+===============
+
+It's java.util.Date, but not quite
+==================================
+
+.. class:: small incremental
+
+| "Time is an extension of java's Date. It add formatting support as well as logic support (such as the before() and after() methods). There are related classes such as TimeRange and TimeBreakdown."
+|
+| `http://thread.gmane.org/gmane.comp.cms.sakai.devel/12697`:tiny:
+
+`Sure, the formatting support was kind of nice`:small:
+======================================================
+
+`But involved heavy synchronization on singleton DateFormats`
+
+`And required a reference to the TimeService`
+
+The range class was definitely useful
+=====================================
+
+``MyTimebreakdown``
+===================
+
+`Just a POJO holder for the same fields exposed by java.util.Calendar`
+
+There was no ``new Time()``
+===========================
+
+`Had to go through a "service API"`
+
+`Which means even more stubbing and mocking in tests`
+
+Didn't actually extend ``java.util.Date``
+=========================================
+
+Still mutable
+=============
+
+`Date/time objects are fundamentally value objects`
+
+And of course...
+================
+
+`before() and after() have been reporting for duty on java.util.Date since at least Java 1.1`
+
+This isn't to say java.util.Date is great stuff.
+================================================
+
+`It's not`
+
+`Still, don't go inventing your own.`:small:
+============================================
+
+`Like you did with your junky log framework`
+
+`And your junky ORM`
+
+`And your junky "fast" HashMap`
+
+If you think it's going to be easy, check out Joda first
+========================================================
+
+`http://joda-time.sourceforge.net/`
+
+`http://www.jroller.com/scolebourne/entry/why_jsr_310_isn_t`
+
+So why do we keep doing this?
+=============================
+
+We Can't Help It
+================
+
+.. class:: tiny
+
+We're programmers. Programmers are, in their hearts, architects, and the first thing they want to do when they get to a site is to bulldoze the place flat and build something grand. We're not excited by incremental renovation: tinkering, improving, planting flower beds.
+
+  -- Spolsky
+
+.. class:: tiny
+
+http://www.joelonsoftware.com/articles/fog0000000069.html
+
+`!(2)`:tiny:
+=============
+
+.. container:: center
+
+  .. image:: images/2227287319_624afa39bb.jpg
+
+.. class:: tiny
+
+`CC BY-NC-ND 2.0 http://www.flickr.com/photos/76578669@N00/2227287319`:tiny:
+
+.. That photo is 500 x 358
+
+!(2) Pulling the Pin
+=====================
+
+`It's easy...`
+
+`It's fun...`
+
+`...and you probably won't be around when it all goes to hell.`
+
+`Naive Precalculation`:small:
+=============================
+
+.. class:: tiny incremental
+
+| <cfset myList = "3,6,9,12,15,18,21,24,27,30,33,36,39,42">
+| <cfset cnt = 0>
+| <cfset newRow = 1>
+| <table>
+|   <cfoutput query="myQuery">
+|     <cfset cnt = cnt + 1>
+|     <cfif newRow neq 0><tr></cfif>
+|     <td>#field#</td>
+|     <cfif ListFind(myList, cnt) neq 0>
+|       </tr>
+|       <cfset newRow = 1>
+|     <cfelse><cfset newRow = 0></cfif>
+|   </cfoutput>
+|   <cfif newRow eq 0></tr></cfif>
+| </table>
+
+`So basically...`:small:
+========================
+
+.. class:: tiny incremental
+
+| boolean isMulitpleOfThree(int myInt) {
+|   int[] threes =
+|     new int[] {3,6,9,12,15,18,21,24,28,30,33,36,39,42};
+|   for (int i = 0; i < threes.length; i++) {
+|     if ( myInt == threes[i] ) {
+|       return true;
+|     }
+|   }
+|   return false;
+| }
+
+Sailing Away...
+===============
+
+`Help desk continually getting calls about commission reconciliation statements being off by 1 or 2 pennies`
+
+`What could be going on...`:tiny:
+=================================
+
+.. class:: tiny incremental
+
+| public void calcAndPrintCommissions(double[][] ratesAndSales,
+|    PrintStream out) {
+|  DecimalFormat format = new DecimalFormat("#,###.##");
+|  format.setMinimumFractionDigits(2);
+|  format.setRoundingMode(RoundingMode.DOWN);
+|  double totalComm = 0;
+|  for ( int i = 0 ; i < ratesAndSales.length; i++ ) {
+|    double commission = ratesAndSales[i][0] * ratesAndSales[i][1];
+|    totalComm += commission;
+|    out.println(ratesAndSales[i][1] 
+|      + "@" + ratesAndSales[i][0]
+|      + " = " + format.format(commission));
+|    }
+|    out.println("----------------");
+|    out.println("Total Comm: " + format.format(totalComm));
+|  }
+| }
+
+`Sure enough...`:small:
+=======================
+
+.. class:: tiny incremental
+
+| 1.0\@0.1 = 0.10
+| 1.0\@0.1 = 0.10
+| 1.0\@0.1 = 0.10
+| 1.0\@0.1 = 0.10
+| 1.0\@0.1 = 0.10
+| 1.0\@0.1 = 0.10
+| 1.0\@0.1 = 0.10
+| 1.0\@0.1 = 0.10
+| 1.0\@0.1 = 0.10
+| 1.0\@0.1 = 0.10
+| ----------------
+| Total Comm: 0.99
+
+Floating point arithmetic isn't "wrong"
+=======================================
+
+`It's just doesn't do what you'd usually expect`
+
+E.g., the Associative Property no longer holds
+==============================================
+
+.. class:: small incremental
+
+(1.0f + 3.0e-8f) + 3.0e-8f != 1.0f + (3.0e-8f + 3.0e-8f)
+
+For everything you ever wanted to know about FP #s
+==================================================
+
+.. class:: tiny
+
+http://blogs.sun.com/darcy/entry/what_every_computer_programmer_redux
+
+A Money class isn't always the (final) answer
+=============================================
+
+`Sub-fractional monetary units do exist conceptually for some complex transactions`
+
+`!(3)`:tiny:
+============
+
+.. container:: center
+
+  .. image:: images/flickr-4342583578.jpg
+
+.. class:: tiny
+
+`CC BY-NC-ND 3.0 http://www.fotopedia.com/items/flickr-4342583578`:tiny:
+
+!(3) God Object
+===============
+
+`Maybe it's time for rest?`
+
+.. class:: incremental center
+
+  .. image:: images/siteaction-line-count.png
+
+`!(4)`:tiny:
+============
+
+!(4) Storyteller
+================
+
+`Poor cohesion`
+
+Everyone pretty much gets "loose coupling"
+==========================================
+
+Just don't do this, right?
+==========================
+
+`private HashMap<String,String> map;`
+
+Oh, and wrap your fields in accessor methods.
+=============================================
+
+Done.
+=====
+
+But what is this "high cohesion" exactly?
+=========================================
+
+Isn't code where compile- and runtime types are the same pretty darned "cohesive"?
+==================================================================================
+
+Cohesion is about a consistent level of abstraction
+===================================================
+
+It elides details, i.e. coupling, by giving things names
+========================================================
+
+I don't care *how* you found the current user, just that you found her
+======================================================================
+
+Weakly cohesive code reads like a bad, boring story
+====================================================
+
+`.`:tiny:
+=========
+
+.. class:: tiny
+
+Once upon a time I needed to render a web page, so I checked the user's credentials and those were OK and then I had to check the user's permissions so I opened a connection and queried a database, then I closed the connection, then I opened another connection and queried a database again, then I had to decrypt one of the values in the results, so I had to load a special crypto library, and I had to go get my shared key from the key store, but first I needed the keystore password, so I had to open a connection and...
+
+Strongly cohesive code is punchy and concise
+============================================
+
+`.`:tiny:
+=========
+
+Once upon a time the authenticated, authorized user securely calculated her current commissions due...
+
+Now a real-world epic...
+========================
+
+Keep in mind this is all *UI* code
+==================================
+
+`Validate underlying service and lookup up current context`:tiny:
+=================================================================
+
+.. class:: tiny
+
+| private String handleITunesU() {
+|   if (itunesuService.missingInitParams()) {
+|     return rl.getString("missingInitParams");
+|   } else {
+|     User currentUser = UserDirectoryService.getCurrentUser();
+|     if (currentUser == null) {
+|       throw new SecurityException("Must have a valid user");
+|     }
+|     String siteId = null;
+|     if (ToolManager.getCurrentPlacement() != null) {
+|       siteId = ToolManager.getCurrentPlacement().getContext();
+|     }
+
+`A brief sub-plot about some authZ tokens`:tiny:
+================================================
+
+.. class:: tiny
+
+| // get the admin credential first to check the course existence
+| Hashtable<String, String> t = itunesuService.getITunesUCreds(true, false);
+|
+| // parse the result
+| String prefix = t.get("prefix")!=null?(String) t.get("prefix"):"";
+|
+| String destination= t.get("destination")!=null?(String) t.get("destination"):"";
+|
+| String token = t.get("token")!=null?(String) t.get("token"):"";
+|
+| LOG.info(this + ":handleITunesU: get course handle first");
+
+`Meanwhile, back at the ranch...`:tiny:
+=======================================
+
+.. class:: tiny
+
+| String siteName = "";
+| if (siteId != null) {
+|   if (SiteService.getInstance().isUserSite(siteId)) {
+|     // if this is a workspace then we treat it the same as not being in a site
+|     siteId = null;
+|   }
+| }
+| if (siteId != null) {
+|    // check the non-workspaces for being a valid site
+|    try {
+|      Site currentSite = SiteService.getSite(siteId);
+|      siteName = currentSite.getTitle();
+|    } catch (IdUnusedException e) {
+|      throw new RuntimeException("Unable to look up the current site by ID", e);
+|    }
+| }
+
+`That sub-plot's going to pay off any second now`:tiny:
+=======================================================
+
+.. class:: tiny
+
+| String iTunesUHandle;
+| // For NULL siteId, the courseHandle will not be a course at all
+| // but will be the handle for the iTunesU site
+| if (siteId == null) {
+|   // use the site root handle or other depending on the
+|   // system setup
+|   iTunesUHandle = itunesuService.getITunesUMainHandle();
+|
+|   if ("".equals(iTunesUHandle)) {
+|     iTunesUHandle = null; // no handle needed for root
+|   }
+|
+|   LOG.info(":handleITunesU: no siteId set, using handle for the main iTunesU site instead: "+iTunesUHandle);
+| }
+
+`Lazily create remote context (using those authZ tokens!)`:tiny:
+================================================================
+
+.. class:: tiny
+
+| else {
+|   String courseHandle = itunesuService.getITunesUCourseHandle(siteId, siteName, prefix, destination, token);
+|
+|   if (courseHandle == null) {
+|     LOG.info(":handleITunesU: cannot find course page for site ("+siteId+"), prepare to create one");
+|
+|     // get upload URL
+|     String sectionHandle = itunesuService.getITunesParentHandle();
+|
+|     String uploadURL = itunesuService.getUploadURL(sectionHandle, prefix, destination, token);
+
+`Cont.`:tiny:
+=============
+
+.. class:: tiny
+
+|     // actual creation of course
+|     if (uploadURL != null) {
+|       addITunesUCourse(uploadURL, prefix, destination, token, siteId);
+|     }
+|     // now that's its created, let's try to get handle again
+|     courseHandle = itunesuService.getITunesUCourseHandle(siteId, siteName, prefix, destination, token);
+
+`Maybe add perms to remote context`:tiny:
+=========================================
+
+.. class:: tiny
+
+| // add the custom permissions to the iTunes site if enabled
+| if (itunesuService.isCustomItunesPermissionsPerSite()) {
+|   if (courseHandle != null) {
+|     // get the xml file ready for adding course
+|     String addPermissionXmlDocument = itunesuService.getAddPermissionXml(courseHandle, siteId);
+|     // get upload url
+|     uploadURL = itunesuService.getUploadURL(courseHandle, prefix, destination, token);
+|     // send the upload http request
+|     itunesuService.wsCall(ITunesUService.WS_ADD_PERMISSION, uploadURL,
+|         addPermissionXmlDocument, prefix, destination, token);
+|     LOG.info(":handleITunesU: permissions added for site ("+siteId+") and handle ("+courseHandle+")");
+|   }
+| }
+
+`Link Contexts`:tiny:
+=====================
+
+.. class:: tiny
+
+|   if (itunesuService.isSaveHandleInTool()) {
+|     // Only if it is a real site and we are supposed to save in tool placement
+|     LOG.info("Saving handleITunesU=" + courseHandle+" in site: "+ siteId);
+|     saveToolITunesUHandle(StringUtil.trimToNull(courseHandle));
+|   }
+|   iTunesUHandle = courseHandle;
+| }
+
+`Get credentials again`:tiny:
+=============================
+
+.. class:: tiny
+
+|   // get itunesu credentials (for all courses if parameter is set)
+|   t = itunesuService.getITunesUCreds(false, itunesuService.getCredentialsForAllSites());
+|
+|   // parse the result
+|   prefix = t.get("prefix")!=null ? (String) t.get("prefix") : "";
+|
+|   destination= t.get("destination")!=null ? (String) t.get("destination") + (iTunesUHandle == null ? "" : "." + iTunesUHandle) : "";
+|
+|   token = t.get("token")!=null ? (String) t.get("token") : "";   
+
+`Some event posting and logging...`:tiny:
+=========================================
+
+.. class:: tiny
+
+|   EventTrackingService.post(EventTrackingService.newEvent(ITunesUConstants.EVENT_ITUNESU_READ, "/site/" + siteId, true));
+|   LOG.info("Access itunesu page from site ("+siteId+") with handle ("+iTunesUHandle+") by " + currentUser.getDisplayName());
+
+`...finally get that view`:tiny:
+================================
+
+.. class:: tiny
+
+|   return getITunesUPage(prefix, destination, token);
+|  }
+| }
+
+What *should* that have looked like?
+====================================
+
+.. class:: tiny
+
+| private String handleITunesU() {
+|   assertValidState();
+|   String iTunesUContextId = null;
+|   if ( inSpecialLocalContext() ) {
+|     iTunesUContextId = getRootITunesUContextId();
+|   } else {
+|     iTunesUContextId = getOrCreateITunesUContext(currentLocalContext());
+|   }
+|   return viewForITunesUContextId(iTunesUContextId);
+| }
+
+But alas...
+===========
+
+Code is only part of the problem
+================================
+
+`!(5.)`:tiny:
+=============
+
+.. container:: center
+
+  .. image:: images/seth-rogen-green-hornet.jpg
+
+.. class:: tiny
+
+`http://www.comicbookmovie.com/fansites/SuperGamer/news/?a=8465`:tiny:
+
+!(5.) The Hornet
+================
+
+.. container:: center
+
+  .. image:: images/hornet.png
+
+!(5.): AKA: Net Negative Producing Programmer
+=============================================
+
+.. class:: small incremental
+
+`The Master of Ceremonies`
+
+.. class:: small incremental
+
+`Ensuring that nothing gets done by demanding that too much get done.`
+
+.. class:: small incremental
+
+`Does (massive) wrong (often) in an attempt to do right.`
+
+NNPP Originally Coined by G. Gordon Schulmeyer
+==============================================
+
+`Think Jay Fields responsible for popularizing it more recently.`
+
+.. class:: tiny incremental
+
+`http://blog.jayfields.com/2009/01/cost-of-net-negative-producing.html`:tiny:
+
+Jay can get a bit worked up
+===========================
+
+.. class:: small
+
+"I'm suggesting that the current minimum requirements for being a programmer are disappointingly low and the products that those programmers produce are often terrible... Any ... NNPP ... should find a new profession."
+
+.. class:: tiny
+
+`http://blog.jayfields.com/2008/08/elitist-or-optimist.html`:tiny:
+
+Bad code is certainly a problem
+===============================
+
+I'm more concerned about wasteful practice
+==========================================
+
+`Extended wall-head beating`
+
+`Absurd "best practices"`
+
+Argued recently about tabs vs spaces?
+=====================================
+
+How about @inheritDoc vs Javadoc copy/paste?
+============================================
+
+.. class:: small
+
+`Apache Mina: http://markmail.org/message/h4w2m4oj4xhhwuxq`:small:
+
+Do you have to null out all object references in Java?
+======================================================
+
+Are you not allowed to use @Override?
+=====================================
+
+Do you have to keep screenshots of all current configuration UIs in the wiki?
+=============================================================================
+
+Do you have to check an entire local Maven repo into source control?
+====================================================================
+
+Is it appropriate to spend *another* iteration getting FitNesse working?
+========================================================================
+
+Must you *absolutely* have X% test coverage?
+============================================
+
+Often the issue is a lack of self-awareness and/or personal investment
+======================================================================
+
+NNPP's tend to just punt problems down the road
+===============================================
+
+Or focus more on problems than solutions
+========================================
+
+Or fret over process rather than progress
+=========================================
+
+Look up some of the conversations that led to Ceki leaving log4j
+================================================================
+
+`And his opinions on Apache project governance`
+
+.. class:: tiny
+
+`http://ceki.blogspot.com/2010/05/forces-and-vulnerabilites-of-apache.html`:tiny:
+`http://www.discursive.com/blog/4364`:tiny:
+
+But sometimes the issue is maybe a bit too much *very* personal investment...
+=============================================================================
+
+`!(6.)`:tiny:
+=============
+
+.. container:: center
+
+  .. image:: images/dhh-fu.jpg
+
+.. class:: tiny
+
+`http://blog.wekeroad.com/2007/10/10/imploding-rails-jesus-dhh-and-the-uncle-ben-principle/`:tiny:
+
+!(6.) Too Cool for School
+=========================
+
+`At a certain level of AWESOME, most normal social constraints just don't apply`
+
+`.`:tiny:
+=========
+
+.. container:: center
+
+  .. image:: images/c1.png
+
+.. class:: tiny
+
+`New Work City https://docs.google.com/present/view?id=ajdtctfhv4hn_264g329gwcc&pli=1`:tiny:
+
+`.`:tiny:
+=========
+
+.. container:: center
+
+  .. image:: images/c2.png
+
+.. class:: tiny
+
+`New Work City https://docs.google.com/present/view?id=ajdtctfhv4hn_264g329gwcc&pli=1`:tiny:
+
+`.`:tiny:
+=========
+
+.. container:: center
+
+  .. image:: images/c3.png
+
+.. class:: tiny
+
+`New Work City https://docs.google.com/present/view?id=ajdtctfhv4hn_264g329gwcc&pli=1`:tiny:
+
+`.`:tiny:
+=========
+
+.. container:: center
+
+  .. image:: images/c4.png
+
+.. class:: tiny
+
+`New Work City https://docs.google.com/present/view?id=ajdtctfhv4hn_264g329gwcc&pli=1`:tiny:
+
+`.`:tiny:
+=========
+
+.. container:: center
+
+  .. image:: images/c5.png
+
+.. class:: tiny
+
+`New Work City https://docs.google.com/present/view?id=ajdtctfhv4hn_264g329gwcc&pli=1`:tiny:
+
+`.`:tiny:
+=========
+
+.. container:: center
+
+   .. image:: images/nick-burns-2-cropped.png
+
+.. class:: tiny
+
+`http://www.hulu.com/watch/19050/saturday-night-live-nick-burns`:tiny:
+
+Developers (and IT professionals in general) can be a nasty bunch
+=================================================================
+
+`.`:tiny:
+=========
+
+.. class:: small
+
+"Model is a bunch of s**t which includes code which queries the database. Controller is how you interact through your model to retrieve the desired result from your model setting. View is a classic piece of s**t of a template system. It'd be easier to just f***ing use a regular SQL query and echo it, but no, RAILS MAKES IT EASIER: all you have to do is go out of your way to learn their conventions. Then the project dies, you go broke, and kill yourself."
+
+.. class:: tiny
+
+`http://encyclopediadramatica.com/Ruby_on_Rails`:tiny:
+
+We all know Jed's Famous Rant
+=============================
+
+.. class:: small
+
+"This is exactly what makes Rails a ghetto. A bunch of half-trained former PHP morons who never bother to sit down and really learn the computer science they were too good to study in college."
+
+.. class:: tiny
+
+`The now officially unavailable "Rails is a Ghetto" blog post`:tiny:
+
+Jed was joking, of course
+=========================
+
+`Right?`
+
+Sometimes the "we're all architects" attitude gets out of hand
+==============================================================
+
+There plenty of hype around open- and community-sourced software
+================================================================
+
+But very little real sense of...
+================================
+
+Comraderie
+==========
+
+Or Charity
+==========
+
+Progamming is Hard
+==================
+
+Respect it and ourselves
+========================
+
+So the last !(pattern)...
+=========================
+
+`!(7.)`:tiny:
+=============
+
+.. container:: center
+
+  .. image:: images/thedailywtf-screenshot.png
+
+!(7.) Obsessing over anti-patterns
+==================================
+
+When you prep something like this you start to realize...
+=========================================================
+
+One man's WTF is another's FTW
+==============================
+
+Sometimes starting over *does* work
+===================================
+
+`.`:tiny:
+=========
+
+.. container:: center
+
+  .. image:: images/firefox-logo.png
+
+Unix is The Right Way, Right?
+=============================
+
+.. class:: tiny incremental
+
+`"Write programs that do one thing and do it well" (McIlroy)`
+
+.. class:: tiny incremental
+
+`"Clarity is better than cleverness" (Raymond)`
+
+.. class:: tiny incremental
+
+`"Always do the least surprising thing" (Raymond)`
+
+.. class:: tiny incremental
+
+`"Small is beautiful" (Gancarz)`
+
+.. class:: tiny incremental
+
+`http://en.wikipedia.org/wiki/Unix_philosophy`:tiny:
+
+Sounds great.
+=============
+
+.. class:: small
+
+"...Mac users have the best, most stable, most modern all-purpose operating system in the world, and here's why: UNIX. [UNIX] is widely regarded as the best industrial strength operating system on the planet."
+
+.. class:: tiny
+
+`LeVitus. Max OS X Leopard for Dummies. 2008. Wiley Publishing, Inc.`:tiny:
+
+Or is it?
+=========
+
+`.`:tiny:
+=========
+
+.. container:: center
+
+  .. image:: images/1263076263_The_UNIX_haters_handbook.jpg
+
+.. class:: tiny
+
+`http://progbooks.net/linux-unix/884-The_UNIX_haters_handbook.html`:tiny:
+
+`It even included...`:tiny:
+===========================
+
+.. container:: center
+
+  .. image:: images/UnixBarfBag.jpg
+
+.. class:: tiny
+
+`http://www.furbium.com/`:tiny:
+
+"Linux is only free if your time is worthless"
+==============================================
+
+`Maybe Jamie Zawinski?`:tiny:
+
+Maybe even patterns themselves are problematic
+==============================================
+
+The Mighty Neal Ford
+====================
+
+.. container:: center
+
+  .. image:: images/2004-01-21headshot.jpg
+
+.. class:: tiny
+
+`http://www.nealford.com/my/bio.htm`:tiny:
+
+`.`:tiny:
+=========
+
+.. class:: small
+
+"The Gang of Four book should have been entitled "Palliatives for Statically Typed Languages", because the recipes it provides are cumbersome solutions to the problems it poses... The Gang of Four book was actually 2 books: a nomenclature describing common software problems and a recipe book for solutions. The vocabulary they defined is still useful. The recipes are a disaster!"
+
+.. class:: tiny
+
+`http://www.nofluffjuststuff.com/conference/chicago/2008/11/session?id=12864`:tiny:
+
+So patterns don't actually solve problems, they just highlight deficiencies in your tools.
+==========================================================================================
+
+.. class:: tiny
+
+`http://ebookbrowse.com/neal-ford-design-patterns-in-dynamic-languages-slides-pdf-d49757665`:tiny:
+
+Of course Neal Himself wrote a patterns book
+============================================
+
+`http://presentationpatterns.com/`
+
+Go find a list of anti-patterns and see how many contradict each other.
+=======================================================================
+
+"Hard Code" is an Anti-Pattern
+==============================
+
+.. class:: tiny
+
+http://en.wikipedia.org/wiki/Hard_code
+
+But so is "Soft-Code"
+=====================
+
+.. class:: tiny
+
+http://en.wikipedia.org/wiki/Softcoding
+
+Am I supposed to reuse existing libraries?
+==========================================
+
+.. class:: tiny
+
+http://c2.com/cgi/wiki?NotInventedHere
+
+.. class:: tiny
+
+http://c2.com/cgi/wiki?ReinventTheWheel
+
+Or do all those dependencies just annoy people?
+===============================================
+
+.. class:: tiny
+
+http://c2.com/cgi/wiki?JunkyardCoding
+
+I'm not supposed to have one giant class
+========================================
+
+.. class:: tiny
+
+http://c2.com/cgi/wiki?GodClass
+
+But lots of small classes are bad too?
+======================================
+
+.. class:: tiny
+
+http://c2.com/cgi/wiki?BigSoupOfClasses
+
+.. class:: tiny
+
+http://en.wikipedia.org/wiki/Yo-yo_problem
+
+Big Ball of Mud is bad, right?
+==============================
+
+"Lisp is like a ball of mud. Add more and it's still a ball of mud - it still looks like Lisp"
+==============================================================================================
+
+.. class:: tiny
+
+`Joel Moses http://portal.acm.org/citation.cfm?id=154766.155373`:tiny:
+
+How do you measure "goodness" anyway?
+=====================================
+
+Simplicity?
+===========
+
+.. class:: tiny incremental
+
+| "The situation is made worse since there's so little effective mentoring in the industry from old-salts who are good at making a religion of the K.I.S.S. principle and making fun of the wealth of bloated, crappy, yet slow-to-fail stall-ware projects that dominate so much of the landscape."
+| 
+|   -- Tom Lord
+|
+| `http://web.mit.edu/ghudson/thoughts/diagnosing`:tiny:
+
+Of course... The main reason cited for why ``arch`` died?
+=========================================================
+
+`Excessive complexity`
+
+.. class:: tiny
+
+`http://sourcefrog.net/weblog/software/vc/arch/whats-wrong.html`:tiny:
+
+How much *awful* code have you seen...
+======================================
+
+...that makes people an *awful* lot of $$$$?
+============================================
+
+So if we can't actually agree on what good code *is*...
+=======================================================
+
+...why do we (developers) spend so much time beating each other up?
+===================================================================
+
+`.`:tiny:
+=========
+
+.. container:: center
+
+  .. image:: images/wtfm.jpg
+
+.. class:: tiny
+
+`http://www.osnews.com/story/19266/WTFs_m`:tiny:
+
+1. Ego
+======
+
+To be a developer you need to *believe* you have something meaningful to contribute
+===================================================================================
+
+2. Laziness
+===========
+
+One of Joel's "Fundamental Law[s] of Programming"
+=================================================
+
+"It’s harder to read code than to write it."
+
+.. class:: tiny
+
+`http://www.joelonsoftware.com/articles/fog0000000069.html`:tiny:
+
+`.`:tiny:
+=========
+
+.. class:: small
+
+"This is why everybody on your team has a different function they like to use for splitting strings into arrays of strings. They write their own function because it's easier and more fun than figuring out how the old function works."
+
+.. class:: tiny
+
+`http://www.joelonsoftware.com/articles/fog0000000069.html`:tiny:
+
+3. Opportunity Costs
+====================
+
+N.Ford's Suck/Rock Dichotomy
+============================
+
+.. class:: tiny
+
+http://memeagora.blogspot.com/2009/08/suckrock-dichotomy.html
+
+4. FUD
+======
+
+There is no manual for How to Do It Correctly
+=============================================
+
+`(That's not actually what *any* of the pattern books promise)`
+
+`Check out http://highscalability.com/`:small:
+==============================================
+
+.. class:: small incremental
+
+`Often it's all about "just doing what seemed right at the time"`
+
+.. class:: small incremental
+
+`If scalability were easy and obvious, it wouldn't be so interesting.`
+
+So if we're a bunch of arrogant, lazy, irrationally over-invested, clueless types...
+====================================================================================
+
+.. class:: small incremental
+
+`A bit of Schadenfreude is to be expected`
+
+There *are* upsides to all the negativity, of course
+====================================================
+
+Fierce independence -> continual experimentation
+================================================
+
+Shaming culture == efficiently enforced "correctness"
+=====================================================
+
+But... "...even making a number of mistakes does not necessarily mean you'll fail."
+===================================================================================
+
+.. class:: tiny
+
+`Martin Pool http://sourcefrog.net/weblog/software/vc/subversion/lord-on-svn.html`:tiny:
+
+And shame culture has an isolating, sometimes disgusting effect.
+================================================================
+
+Is this why the girls stay away?
+================================
+
+`Particularly in OSS`
+
+`.`:tiny:
+=========
+
+"The problem isn’t Women in Open Source, it’s the Men in Open Source. It’s not really about being ‘women-friendly’, it’s about being friendly."
+
+`Piers Cawley http://www.bofh.org.uk/2005/11/02/women-in-open-source`:tiny:
+
+What exactly is thedailywtf.com accomplishing?
+==============================================
+
+`Why do *you* read it?`
+
+Sure, have a laugh
+==================
+
+`But do it for the right reasons`
+
+And remember...
+===============
+
+Maybe those bearded Unix geeks had it right after all...
+========================================================
+
+.. container:: center
+
+  .. image:: images/ken-thompson-l-and-dennis-ritchie-r.jpg
+
+.. class:: tiny
+
+`http://techtoggle.com/2009/01/rare-collection-www-microsoft-apple-hp-unix-google-intel-sun-linux/`:tiny:
+
+"Worse is Better"
+=================
+
+.. class:: tiny
+
+`Richard Gabriel http://en.wikipedia.org/wiki/Worse_is_better`:tiny:
